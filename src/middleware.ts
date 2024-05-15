@@ -87,7 +87,7 @@ export function middleware(req: NextRequest) {
   console.log('env ppublic root domain: ', process.env.NEXT_PUBLIC_ROOT_DOMAIN);
   console.log('host original: ', req.headers.get('host'));
   let hostname = req.headers.get('host')?.replace('.localhost:3000', `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`);
-  console.log('hostname remplazado: ', hostname);
+  console.log('hostname remplazadoo: ', hostname);
   const searchParams = req.nextUrl.searchParams.toString();
   // Get the pathname of the request (e.g. /, /about, /blog/first-post)
   const path = `${url.pathname}${searchParams.length > 0 ? `?${searchParams}` : ''}`;
