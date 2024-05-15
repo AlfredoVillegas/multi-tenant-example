@@ -84,6 +84,7 @@ export default async function middleware2(req: NextRequest) {
 export function middleware(req: NextRequest) {
   const url = req.nextUrl;
   // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
+  console.log('env ppublic root domain: ', process.env.NEXT_PUBLIC_ROOT_DOMAIN);
   console.log('host original: ', req.headers.get('host'));
   let hostname = req.headers.get('host')?.replace('.localhost:3000', `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`);
   console.log('hostname remplazado: ', hostname);
@@ -108,6 +109,7 @@ export function middleware(req: NextRequest) {
     return NextResponse.rewrite(new URL(`/app${path === '/' ? '' : path}`, req.url));
   }
 
+ 
   // rewrite root application to `/home` folder
   if (hostname === 'localhost:3000' || hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN) {
     console.log('redirecting to home / ');
